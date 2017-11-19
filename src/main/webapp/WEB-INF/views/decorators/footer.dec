@@ -1,0 +1,9 @@
+		</section>
+		<div class="col-xs-4 col-xs-offset-5 footer">
+    		<img src="${rc.contextPath}/css/common/images/front_logo_bottom.png" />
+    		<p class="front_copyright">&copy; All Rights Reserved</p>
+    		<p class="developer_copyright">Developed By: Abdullah-Al-Monsur, Ole Ul Islam</p>
+    		<p class="developer_copyright">Contact: 01552392169, Email: rume81@gmail.com</p>
+		</div>
+</body>
+</html>

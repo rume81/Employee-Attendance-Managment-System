@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<#--
+	Sitemesh context attributes:
+
+	base 	request.getContextPath()
+	title 	Parsed page title (<title>...<title>)
+	head 	Parsed page head
+	body 	Parsed page body
+	page 	SiteMesh's internal Page object
+-->
+
+	<#include "header.dec" />
+
+
+	    <div id="body">
+	    	${body}
+	    </div>
+	
+	<#include "footer.dec" />
+

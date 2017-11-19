@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/views/decorators">
+    <excludes>
+    	<pattern>*.html</pattern>
+    	<pattern>/login</pattern>
+    	<pattern>/users/valideduser</pattern>
+    	<pattern>/employee/att</pattern>
+    	<pattern>/user/logout</pattern>
+    	<pattern>/updateemp</pattern>
+    	<pattern>/addemp</pattern>
+    	<pattern>/addempwork</pattern>
+    	<pattern>/addholidaywork</pattern>
+    	<pattern>/searchMonthlyAtt</pattern>
+    	<pattern>/attmodify</pattern>
+    	<pattern>/addleaverequest</pattern>
+    	<pattern>/searchDailyAtt</pattern>
+    	<pattern>/calculateLeave</pattern>
+    	<pattern>/updatepass</pattern>
+    	<pattern>/holidayDelete</pattern>
+    	<pattern>/addwatcher</pattern>
+    	<pattern>/updatewatcher</pattern>
+    	<pattern>/approveRejectLeave</pattern>
+    	<pattern>/approverList</pattern>
+    	<pattern>/batchSignout</pattern>
+    	<pattern>/employee/lunch</pattern>
+    	<pattern>/employee/guestlunch</pattern>
+    	<pattern>/searchattstatus</pattern>
+    	<pattern>/leavedetailssearch</pattern>
+    	<pattern>/searchDailyAttByTeam</pattern>
+    	<pattern>/lunchdetailssearch</pattern>
+    	<pattern>/cancelLeave</pattern>
+    	<pattern>/updateLeave</pattern>
+    	<pattern>/searchapprovedleave</pattern>
+    	<pattern>/editholidaywork</pattern>
+    	<pattern>/employee/autolunchentry</pattern>
+    	<pattern>/updateLeaveIndividual</pattern>
+    	<pattern>/saveteam</pattern>
+    	<pattern>/searchovertimestatus</pattern>
+    	<pattern>/saveleavetype</pattern>
+    	<pattern>/updateleavetype</pattern>
+    	<pattern>/employeeDelete</pattern>
+    	<pattern>/saveempleavequota</pattern>
+    	<pattern>/reportregenerator</pattern>
+    	<pattern>/test</pattern>
+    	<pattern>/getQuota</pattern>
+    	<pattern>/addofficeoutgoingrequest</pattern>
+    	<pattern>/updateOutgoingIndividual</pattern>
+    	<pattern>/cancelOutgoing</pattern>
+    	<pattern>/approveRejectOutgoing</pattern>
+    	<pattern>/yearlyleavesearch</pattern>
+    	<pattern>/addbatchleave</pattern>
+    </excludes>
+
+    <decorator name="main" page="/main.dec">
+          <pattern>/*</pattern>
+    </decorator>
+</decorators>

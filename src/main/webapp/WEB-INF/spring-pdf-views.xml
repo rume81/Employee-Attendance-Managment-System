@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+	<bean id="PdfAttendanceReportView"
+	   	class="com.WAMS.ams.utils.PdfAttendanceReportView">
+	</bean>
+	
+	<bean id="PdfMonthlyLeaveReportView"
+	   	class="com.WAMS.ams.utils.PdfMonthlyLeaveReportView">
+	</bean>
+ 
+ 	<bean id="DailyAttendanceListPdf"
+	   	class="com.WAMS.ams.utils.DailyAttendancePdfView">
+	</bean>
+	
+	<bean id="EmployeeOvertimePdf"
+	   	class="com.WAMS.ams.utils.EmployeeOvertimePdfView">
+	</bean>
+</beans>

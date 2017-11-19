@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body style="max-width: 600px; margin: 0 auto; border: 1px solid #ddd; padding: 20px">
+		<p>Dear Sir,</p>
+		<br />
+		<p>Please Approve my <#LEAVE_TYPE#> application as follows:</p>
+		<br />
+		<p>Leave reason : <#REASON#></p>
+		<p>No of days   : <#NO_OF_DAYS#></p> 
+		<p>Date's       : <#DATES#></p>
+		<p>Approve Link : <#APPROVE_LINK#></p>
+		<br /><br />
+		<p>Thank you for your kind consideration of my leave request.</p>
+		<br />
+		<p>Yours Sincerely,</p>
+
+		<p><#EMP_NAME#></p>
+		<p><#DESIGNATION#>  at WebHawks IT</p>
+		<p><#EMP_EMAIL#></p>  
+	</body>
+</html> 

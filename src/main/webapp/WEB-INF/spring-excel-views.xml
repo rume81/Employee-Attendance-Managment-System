@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+ 	<bean id="AttendanceListExcel" class="com.WAMS.ams.utils.AttendanceExcelView">
+	</bean>
+	
+	<bean id="DailyAttendanceListExcel" class="com.WAMS.ams.utils.DailyAttendanceExcelView">
+	</bean>
+	
+	<bean id="MonthlyEmpStatusListExcel" class="com.WAMS.ams.utils.MonthlyEmpStatusExcelView">
+	</bean>
+	
+	<bean id="EmployeeOvertimeExcel" class="com.WAMS.ams.utils.EmployeeOvertimeExcelView">
+	</bean>
+</beans>

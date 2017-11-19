@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd	
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- Scans within the base package of the application for @Components to configure as beans -->
+	<!-- <context:component-scan base-package="com.scooby.prms" />-->
+	<bean id="jdbcService" class="com.WAMS.ams.utils.JdbcService">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<!--<bean id="jdbcServiceAcc" class="com.WAMS.ams.utils.JdbcServiceAcc">
+		<property name="dataSource">
+			<ref bean="dataSourceAcc" />
+		</property>
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplateAcc" />
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManagerAcc"/>
+		</property>
+	</bean>-->
+	
+	<!-- Dao Declaration -->
+	<bean id="sessionDao" class="com.WAMS.ams.dao.impl.SessionDAO">
+		<property name="jdbcService">
+			<ref bean="jdbcService" />
+		</property>
+	</bean>
+	<bean id="wamsDao" class="com.WAMS.ams.dao.impl.WamsDAO">
+		<property name="jdbcService">
+			<ref bean="jdbcService" />
+		</property>
+	</bean>
+	<!-- <bean id="accAttendanceDAO" class="com.WAMS.ams.dao.impl.AccAttendanceDAO">
+		<property name="jdbcServiceAcc">
+			<ref bean="jdbcServiceAcc" />
+		</property>
+	</bean>-->
+	<!-- Dao Declaration End-->
+	<!-- Service Declaration -->
+	<bean id="sessionService" class="com.WAMS.ams.services.impl.SessionService">
+		<property name="userSession">
+			<ref bean="userSession" />
+		</property>
+		<property name="sessionDao">
+			<ref bean="sessionDao" />
+		</property>
+	</bean>
+	<bean id="wamsService" class="com.WAMS.ams.services.impl.WamsService">
+		<property name="wamsDao">
+			<ref bean="wamsDao" />
+		</property>
+		<!-- <property name="accAttendanceDAO">
+			<ref bean="accAttendanceDAO" />
+		</property> -->
+	</bean>
+	<!-- Service Declaration End-->
+	<!-- All Controllers -->
+	<bean class="com.WAMS.ams.controller.HomeController">
+		<property name="sessionService">
+			<ref bean="sessionService" />
+		</property>
+		<property name="wamsService">
+			<ref bean="wamsService" />
+		</property>
+		<property name="mailSender">
+			<ref bean="mailSenderWeb" />
+		</property>
+		<property name="ipList" value="${client.ip}" />
+		<property name="timeAdjust" value="${client.intime}"/>
+		<property name="autolunchentry" value="${client.autolunchentry}"/>
+	</bean>
+	<!-- All Controllers End-->
+	<bean id="userSession" class="com.WAMS.ams.model.UserSession" scope="session">
+		<aop:scoped-proxy />
+	</bean>
+	<bean id="projectProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location" value="WEB-INF/config.properties" />
+ 	</bean>
+ 	
+ 	<!-- <bean id="mailSenderWeb" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="host" value="mail.webhawksit.com" />
+		<property name="port" value="587" />
+		<property name="username" value="wams@webhawksit.com" />
+		<property name="password" value="WebHawksIT" />
+		<property name="javaMailProperties">
+			<props>-->
+				<!-- Use SMTP-AUTH to authenticate to SMTP server -->
+				<!--<prop key="mail.smtp.auth">true</prop>-->
+				<!-- Use TLS to encrypt communication with SMTP server -->
+				<!--<prop key="mail.smtp.starttls.enable">false</prop>-->
+				<!--<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop> -->
+				<!--<prop key="mail.mime.charset">ISO-8859-1</prop>-->
+				<!-- <prop key="mail.smtp.socketFactory.port">25</prop>-->
+				<!--<prop key="mail.smtp.socketFactory.class">"javax.net.ssl.SSLSocketFactory"</prop>-->
+				<!--<prop key="mail.smtp.socketFactory.fallback">"true"</prop> -->
+			<!--</props>
+		</property>
+	</bean>-->
+	
+	<bean id="mailSenderWeb" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="25" />
+		<property name="username" value="info.webhawksit@gmail.com" />
+		<property name="password" value="webhawks1234" />
+		<property name="javaMailProperties">
+			<props>
+				<!-- Use SMTP-AUTH to authenticate to SMTP server -->
+				<prop key="mail.smtp.auth">true</prop>
+				<!-- Use TLS to encrypt communication with SMTP server -->
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.mime.charset">ISO-8859-1</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean name="batchSignoutJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.BatchSignoutJob" />
+	</bean>
+	<bean name="ReportGenerateJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.ReportGenerateJob" />
+	</bean>	
+	<bean name="batchInOutFromCard" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.BatchInOutFromCard" />
+  		<property name="jobDataAsMap">
+		    <map>
+		      <entry key="autolunchentry" value="${client.autolunchentry}" />
+		    </map> 
+		</property>
+	</bean>
+	<bean name="batchInOutFromCardByCurrentDay" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.BatchInOutFromCardByCurrentDay" />
+  		<property name="jobDataAsMap">
+		    <map>
+		      <entry key="autolunchentry" value="${client.autolunchentry}" />
+		    </map> 
+		</property>
+	</bean>
+	<bean name="absentCheckJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.AbsentCheckJob" />
+	</bean>
+	<bean name="sendMonthlyReportEmailJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.SendMonthlyReportEmailJob" />
+  		<property name="jobDataAsMap">
+		    <map>
+		      <entry key="reportstartdate" value="${client.reportstartdate}" />
+		    </map> 
+		</property>
+	</bean>
+	
+	<bean name="sendEmailJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+  		<property name="jobClass" value="com.WAMS.ams.controller.SendEmailJob" />
+  		<property name="jobDataAsMap">
+		    <map>
+		      <entry key="maximumSendMail" value="${client.maximumSendMail}" />
+		    </map> 
+		</property>
+	</bean>
+	
+	<bean id="cronTriggerSendStatusReport" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="sendMonthlyReportEmailJob" />
+	    <!-- run every month last day at 11 30 PM -->
+	    <!-- <property name="cronExpression" value="0 30 23 L * ?" /> -->
+	    <property name="cronExpression" value="0 0 5 1 * ?" />
+	</bean>
+	
+	<bean id="cronTriggerBatchSignout" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="batchSignoutJob" />
+	    <!-- run every night at 11 PM -->
+	    <property name="cronExpression" value="0 0 23 * * ?" />
+	</bean>
+	<bean id="cronTriggerReportGenerate" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="ReportGenerateJob" />
+	    <!-- run every day at 1 AM -->
+	    <property name="cronExpression" value="0 0 1 * * ?" />
+	</bean>
+	<bean id="cronTriggerBatchInOutFromCard" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="batchInOutFromCard" />
+	    <!-- run every 30 Minutes -->
+	    <property name="cronExpression" value="0 0/3 * * * ?" />
+	</bean>
+	<bean id="cronTriggerBatchInOutFromCardByCurrentDay" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="batchInOutFromCardByCurrentDay" />
+	    <!-- run every 30 Minutes -->
+	    <property name="cronExpression" value="0 0 10-13 * * ?" />
+	</bean>
+	
+	<bean id="cronTriggerBatchInOutFromCardByCurrentDay2" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="batchInOutFromCardByCurrentDay" />
+	    <!-- run every 30 Minutes -->
+	    <property name="cronExpression" value="0 0 16-22 * * ?" />
+	</bean>
+	
+	<bean id="cronTriggerAbsentCheck" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="absentCheckJob" />
+	    <!-- run every month last day at 11 30 PM -->
+	    <property name="cronExpression" value="0 13 12 L * ?" />
+	    <!-- run every day at 12 13 PM -->
+	    <!--<property name="cronExpression" value="0 13 12 * * ?" />-->
+	</bean>
+	
+	<bean id="cronTriggerSendMail" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	    <property name="jobDetail" ref="sendEmailJob" />
+	    <!-- run every 5 minutes -->
+	    <property name="cronExpression" value="0 0/5 * * * ?" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	    <property name="triggers">
+	        <list>
+	            <ref bean="cronTriggerReportGenerate" />
+	            <ref bean="cronTriggerBatchSignout" /> 
+	            <ref bean="cronTriggerBatchInOutFromCard" /> 
+	            <ref bean="cronTriggerBatchInOutFromCardByCurrentDay" />
+	            <ref bean="cronTriggerBatchInOutFromCardByCurrentDay2" /> 
+	            <ref bean="cronTriggerAbsentCheck" />  
+	            <ref bean="cronTriggerSendStatusReport" /> 
+	            <ref bean="cronTriggerSendMail" />
+	        </list>
+	    </property>
+	    <property name="applicationContextSchedulerContextKey">
+            <value>applicationContext</value>
+    	</property>
+	</bean>
+</beans>

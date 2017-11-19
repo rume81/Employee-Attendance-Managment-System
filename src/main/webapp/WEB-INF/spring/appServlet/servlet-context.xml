@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/images/**" location="/resources/images/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!--<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>-->
+	
+	<beans:bean class="org.springframework.web.servlet.view.XmlViewResolver">
+	   <beans:property name="location" value="/WEB-INF/spring-excel-views.xml"/>
+	   <beans:property name="order" value="0"/>
+	</beans:bean>
+	
+	<beans:bean class="org.springframework.web.servlet.view.XmlViewResolver">
+	   <beans:property name="location" value="/WEB-INF/spring-pdf-views.xml" />
+	   <beans:property name="order" value="0" />
+	</beans:bean>
+	
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<beans:property name="cache" value="true" />
+		<beans:property name="prefix" value="/" />
+		<beans:property name="suffix" value=".ftl" />
+		<beans:property name="contentType" value="text/html; charset=UTF-8"/>
+		<beans:property name="exposeSpringMacroHelpers" value="true" />
+		<beans:property name="requestContextAttribute" value="rc" />
+	</beans:bean>
+
+
+
+	<beans:bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<beans:property name="templateLoaderPath" value="/WEB-INF/views/freemarker/" />
+		<beans:property name="freemarkerVariables">
+			<beans:map>
+				<beans:entry key="xml_escape">
+					<beans:bean class="freemarker.template.utility.XmlEscape">
+					</beans:bean>
+				</beans:entry>
+			</beans:map>
+		</beans:property>
+		<beans:property name="freemarkerSettings">
+			<beans:props>
+				<beans:prop key="number_format">0</beans:prop>
+				<beans:prop key="datetime_format">dd.MM.yyyy</beans:prop>
+				<beans:prop key="template_exception_handler">rethrow</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	  <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	  <beans:property name="url" value="jdbc:mysql://localhost:3306/ams"/>
+	  <beans:property name="username" value="root"/>
+	  <beans:property name="password" value="WebHawksIT"/>
+	  <!--<beans:property name="password" value="root"/>-->
+   	</beans:bean>
+   	
+   	<!--<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	  <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	  <beans:property name="url" value="jdbc:mysql://localhost:3306/sharing_ams"/>
+	  <beans:property name="username" value="sharing_ams"/>
+	  <beans:property name="password" value="ams5212"/>
+   	</beans:bean>-->
+   	
+   	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+     	<beans:property name="dataSource" ref="dataSource"/>
+  	</beans:bean>
+  	
+  	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<beans:property name="dataSource" ref="dataSource"/>
+  	</beans:bean>
+  	
+   	<!--<beans:bean id="dataSourceAcc" class="org.springframework.jdbc.datasource.DriverManagerDataSource" scope="singleton">
+	  <beans:property name="driverClassName" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+	  <beans:property name="url" value="jdbc:odbc:;Driver={Microsoft Access Driver (*.mdb)};DBQ=D:/AttSys/att2000.mdb;"/>
+	  <beans:property name="username" value=""/>
+	  <beans:property name="password" value=""/>
+   	</beans:bean> -->
+   	<!-- <beans:bean id="dataSourceAcc" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <beans:property name="driverClassName" value="net.ucanaccess.jdbc.UcanaccessDriver"/>
+	  <beans:property name="url" value="jdbc:ucanaccess://C:\\ZKTeco\\att2000.mdb"/>
+	  <beans:property name="username" value=""/>
+	  <beans:property name="password" value=""/>
+   	</beans:bean>
+  
+  	
+  	
+  	<beans:bean id="transactionManagerAcc" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+     	<beans:property name="dataSource" ref="dataSourceAcc"/>
+  	</beans:bean>  	
+  	
+  	<beans:bean id="jdbcTemplateAcc" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<beans:property name="dataSource" ref="dataSourceAcc"/>
+  	</beans:bean> -->
+  	
+  	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+       	<!-- setting maximum upload size -->
+    	<beans:property name="maxUploadSize" value="-1" />
+  	</beans:bean>
+	<!-- Imports user-defined @Controller beans that process client requests -->
+	<beans:import resource="controllers.xml" />
+	
+</beans:beans>

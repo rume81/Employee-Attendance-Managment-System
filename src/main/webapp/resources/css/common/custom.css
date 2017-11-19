@@ -1,0 +1,534 @@
+.container-fluid {
+    max-width: 1150px;
+}
+.no_padding {
+    padding: 0;
+}
+.no_padding_left {
+    padding-left: 0;
+}
+.no_padding_right {
+    padding-right: 0;
+}
+.blue_test {
+    color: #4cb2ec;
+}
+.header_area p, input[type="search"] {
+    text-align: center;
+    margin-top: 10px;
+}
+.error {
+  color: #ff0000;
+  font-weight: bold;
+}
+.world_clock li {
+  border: 1px solid #666666;
+  border-radius: 4px;
+  float: left;
+  list-style: outside none none;
+  margin-right: 5px;
+  padding: 3px;
+}
+.profile_table {
+    font-size: 12px;
+}
+.profile_table tbody tr td {
+    padding: 0 2px;
+}
+.sidebar {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(212, 228, 239, 1) 0%, rgba(114, 192, 237, 1) 19%, 
+        rgba(62, 173, 236, 1) 29%, rgba(62, 173, 236, 1) 38%) repeat scroll 0 0;
+    min-height: 650px;
+}
+.sidebar_nav {
+
+    position: relative;
+    overflow: hidden;
+}
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-s6z2{text-align:center}
+.time_table select{
+    max-width: 125px;
+}
+.time_table {
+    margin-bottom: 0;
+}
+.time_table p {
+    margin-top: 52px;
+}
+.time_table input[type="search"] {
+    
+}
+.profile_logo {
+  margin-bottom: 19px;
+}
+.project_panel {
+    border-radius: 0px;
+    border-right: 0;
+}
+.site_footer {
+    background: #159ecf none repeat scroll 0 0;
+}
+.site_footer p {
+    margin: 10px;
+}
+/*********** For Open new project page **********/
+.scobby_main {
+    border-right: 1px solid #ddd;
+    min-height: 430px;
+}
+.scobby {
+  border: 1px solid #ddd;
+  margin-top: 25px;
+}
+.scobby h2 {
+    margin: 25px 0 25px 0;
+}
+.new_project {
+    margin-top: 20px;
+}
+.scobby_project {
+  border: 1px solid #ddd;
+  margin: 10px 20px;
+}
+.scobby_project p {
+    text-align: center;
+    margin: 20px 5px;
+}
+/********** Project Management page **********/
+
+.project {
+  border-right: 1px solid #ddd;
+}
+.project_heading {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.define_project {
+    padding: 0px;
+    width: 100%;
+}
+.project_table {
+    border-right: 0;
+}
+.project_table tr td{
+    border-right: 0 none !important;
+}
+.define_project > li {
+    list-style: none;
+    float: left;
+    width: 23%;
+    margin-left: 1%;
+    margin-right: 1%; 
+}
+.project .form-control {
+  border-radius: 0;
+}
+.project .input-group-addon {
+    border-radius: 0;
+}
+.project .form-control {
+    padding: 5px 0;
+}
+.SlectBox label {
+    margin-bottom: 0;
+    border-left: 1px solid #a4a4a4;
+}
+.options label {
+    font-weight: normal;
+}
+.task-details p {
+    margin-bottom: 0;
+}
+.task_brief {
+  border: 1px solid;
+  margin: 0 10px 0 0;
+  min-height: 42px;
+}
+.task_name {
+  border-right: 1px solid;
+  padding: 10px 0px;
+}
+.task_title {
+    padding: 3px 5px;
+}
+.task_depend {
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    background-color: #eee;
+}
+.dependent_to {
+    border-right: 1px solid;
+}
+.depent_supervisor .form-control{
+    height: 28px;
+    border-radius: 0;
+    background-color: #eee;
+}
+.deligate_supervisor .CaptionCont.SlectBox {
+  padding: 9px 0;
+}
+.dependent_to p, .task_report_to p {
+  margin: 5px 0 7px 5px;
+}
+.deligated_to{
+    border: 1px solid;
+    min-height: 42px;
+}
+.deligate_supervisor {
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    min-height: 42px;
+}
+.deligate_supervisor .form-control {
+  margin-top: 6px;
+}
+.project_show {
+  width: 860px;
+}
+.hour .form-control {
+  border-radius: 0;
+  margin-top: 3px;
+}
+.task_report_to {
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    background-color: #eee;
+}
+.deligate_office {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+.profile_image {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 126px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+ 
+.deligate_supervisor .form-control, .deligate_office .form-control {
+    height: 30px;
+    border-radius: 0;
+}
+.deligate_office .form-control {
+    background-color: #eee;
+}
+.deligated_to p {
+  margin: 0;
+  padding: 10px 0 5px 5px;
+}
+.hour_required {
+    border: 1px solid;
+    min-height: 42px;
+}
+.hour {
+    border: 1px solid;
+    border-left: none;
+    min-height: 42px;
+}
+.parallel {
+    border: 1px solid;
+}
+.parallel p:first-child {
+  border-bottom: 1px solid;
+  margin: 0;
+}
+.client_details tr td:first-child {
+  width: 140px;
+}
+.task_detail {
+    margin-bottom: 2px;
+}
+
+.task-details {
+    margin: 10px 0 20px;
+}
+.task-details h4 {
+    margin-left: 10px;
+}
+/*For user management*/
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0 0 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+}
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+}
+
+    
+/******* For User profile ***********/
+.static_data {
+	color: #4CB2EC;
+}
+.table td {
+  vertical-align: middle !important;
+}
+.employee_profile .form-group {
+  margin-bottom: 0;
+}
+.official_record table, .academic_information table {
+  margin-left: 15px;
+}
+.user_heading {
+    margin-left: 3%;
+}
+.add_profile .form-group {
+    margin-bottom: 0;
+}
+.add_profile .form-control {
+    border-radius: 0;
+    height: 26px;
+    padding: 0px 12px;
+}
+.personal_info .btn {
+    border-radius: 0;
+    padding: 2px 7px;
+}
+.personal_info input[type="file"] {
+    max-width: 190px;
+}
+.personal_info .form-control {
+  border: medium none;
+  box-shadow: none;
+}
+.file_width {
+  min-width: 74px;
+}
+.maritual_status .SumoSelect {
+  margin-left: 6%;
+  max-width: 66%;
+}
+.table_inside {
+  margin-bottom: 0;
+}
+.employee_profile td{
+    vertical-align: middle !important;
+}
+.optWrapper {
+	max-height: 230px;
+}
+input[type="file"] {
+  max-width: 228px;
+}
+
+input[type="file"] {
+	color: transparent;
+	width: 70%;
+	float: left;
+}
+
+.save_employee {
+  margin-bottom: 20px;
+  margin-right: -15px;
+}
+
+.file_image {
+  height: 30px;
+  width: 40px;
+}
+.image_modal {
+  width: 330px;
+}
+.image_hover {
+  height: 300px;
+  margin: 0 auto;
+  width: 300px;
+}
+.summary_inside {
+  padding: 0 !important;
+}
+.summary_inside table {
+  margin-bottom: 0;
+}
+.project_summary td, .project_summary th {
+  vertical-align: middle !important;
+}
+.summary_inside input[type="checkbox"] {
+  margin: 0;
+}
+
+/************ For Responsive design **********/
+/************ For Medium device **************/
+@media (min-width: 992px) and (max-width: 1160px) {
+    .SlectBox {
+        width: 175px;
+    }
+}
+
+
+/*********** For Tablet PC (SM)  *******/
+@media (min-width: 768px) and (max-width: 991px) {
+    .time_table tbody tr td {
+        padding: 10px 5px;
+    }
+    .deligated {
+      padding-left: 0;
+    }
+    .dependent_to p, .task_name {
+        padding-left: 15px;
+    }
+    .project ul {
+        width: 100%;
+    }
+    .project ul li {
+        width: 46%;
+        margin-left: 3%;
+        margin-bottom: 1%;
+    }
+    .SlectBox {
+        width: 225px;
+    }
+}
+/************ For Mobile device (XS)**********/
+@media (min-width: 360px) and (max-width: 767px) {
+    .time_table tbody tr td {
+        padding: 10px 0px;
+    }
+    .define_project {
+        width: 100%;
+    }
+    .define_project li {
+        width: 48%;
+        margin-right: 1%;
+        margin-bottom: 1%;
+    }
+    .SumoSelect {
+          width: 100%;
+      }
+      .SumoSelect > .CaptionCont {
+         width: 100%; 
+      }
+    .deligated {
+      padding-left: 0;
+    }
+    .hour_details {
+        padding: 0;
+    }
+    .task_brief {
+        margin: 0;
+    }
+    
+}
+    /********** For exra small *******/
+    @media (min-width: 240px) and (max-width: 359px) {
+      .define_project li {
+          width: 100%;
+          margin-bottom: 2%;
+      }
+      .SumoSelect {
+          width: 100%;
+      }
+      .SumoSelect > .CaptionCont {
+         width: 100%; 
+      }
+ }
+ .hiddenrow {
+ 	display: none;
+ }
+ .project_summary th {
+  text-align: center;
+}
+.project_summary thead {
+	background-color: #3eadec;
+	color: #fff;
+}
+.modal_width {
+	width: 780px;
+}
+ 
+.name {
+	width:135px;
+}
+
+.search {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-top: 6px;
+}
+.search .form-group {
+  margin-bottom: 6px;
+}
+.search_label {
+  margin-bottom: 0;
+  padding-top: 6px;
+}
+.search input[type="search"] {
+	margin-top: 0;
+}
+.date {
+  margin-right: 300px;
+}
+.manipulation {
+  margin-top: 40px;
+  margin-left: 60px;
+}
+
+.btn-plus{
+    background-image:url('images/plus.png');
+    width: 35px;
+    height: 35px;
+    padding: 2px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+
+.btn-minus{
+    background-image:url('images/minus.png');
+    width: 35px;
+    height: 35px;
+    padding: 2px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+.home_heading {
+  margin-top: 95px;
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+	.user_id {
+  		min-width: 100px;
+	}
+}
+
+.main_content {
+  background: rgba(0, 0, 0, 0) url("images/10.png") no-repeat scroll center center;
+  min-height: 650px;
+}
+
+.sidebar h3 {
+  margin-top: 10px;
+}
+
+#rotate {
+	-moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+  
+}
+
+.front_copyright {
+    font-size: 18px;
+}
+
+.developer_copyright {
+    font-size: 12px;
+    color: #fff;
+}
